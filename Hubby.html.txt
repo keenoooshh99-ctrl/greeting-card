@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Birthday!</title>
+<style>
+/* Basic Page Styling */
+body {
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(#87ceeb, #ffd1dc); /* sky to pink sunset */
+    overflow: hidden;
+    font-family: 'Segoe UI', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Card Styling */
+.card {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 50px;
+    border-radius: 25px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    animation: fadeIn 2s ease;
+    position: relative;
+    z-index: 1;
+}
+
+h1 {
+    color: #ff4d6d;
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 18px;
+    color: #333;
+}
+
+/* Floating Hearts Animation */
+.heart {
+    position: absolute;
+    color: #ff4d6d;
+    font-size: 20px;
+    animation: float 6s linear infinite;
+}
+
+@keyframes float {
+    0% {transform: translateY(100vh) rotate(0deg);}
+    100% {transform: translateY(-10vh) rotate(360deg);}
+}
+
+@keyframes fadeIn {
+    from {opacity: 0; transform: scale(0.8);}
+    to {opacity: 1; transform: scale(1);}
+}
+
+/* Moving castle background (simplified effect) */
+.castle {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 300px;
+    z-index: 0;
+    animation: floatCastle 6s ease-in-out infinite alternate;
+}
+
+@keyframes floatCastle {
+    0% { transform: translateX(-50%) translateY(0px);}
+    50% { transform: translateX(-50%) translateY(-20px);}
+    100% { transform: translateX(-50%) translateY(0px);}
+}
+</style>
+</head>
+
+<body>
+
+<!-- Background music -->
+<audio autoplay loop>
+    <source src="https://cdn.pixabay.com/download/audio/2021/09/27/audio_1b7f1f5209.mp3?filename=magical-fantasy-11512.mp3" type="audio/mpeg">
+</audio>
+
+<!-- Floating hearts -->
+<script>
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "❤";
+    heart.style.left = Math.random()*100 + "vw";
+    heart.style.fontSize = (Math.random()*20 + 15) + "px";
+    document.body.appendChild(heart);
+    setTimeout(()=>{heart.remove();}, 6000);
+}
+setInterval(createHeart, 400);
+</script>
+
+<!-- Magical floating castle -->
+<img src="https://i.ibb.co/WB5m6Vx/howls-castle.png" alt="Howl's Moving Castle" class="castle">
+
+<!-- Greeting Card -->
+<div class="card">
+    <h1>Happy Birthday! 🎂</h1>
+    <p>"Flying high above worries, you are my Howl and I am your Sophie… let's chase magic forever!"</p>
+</div>
+
+</body>
+</html>
